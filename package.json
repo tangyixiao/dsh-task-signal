@@ -6,11 +6,60 @@
   "type": "module",
   "license": "MIT",
   "author": "Tangyixiao",
-  "keywords": ["dsh-plugin", "deepseek-harness", "notification", "sound"],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "notification",
+    "sound"
+  ],
   "main": "lib/index.js",
-  "exports": {".": "./lib/index.js", "./client": "./lib/client.js", "./cordis.patch.yml": "./cordis.patch.yml", "./package.json": "./package.json"},
-  "files": ["lib", "cordis.patch.yml", "README.md", "README.en.md", "LICENSE", "NOTICE.md"],
-  "engines": {"node": "^22.19.0 || >=24.0.0", "dsh": "0.2.2-rc.3"},
-  "dsh": {"bundle": {"patch": "./cordis.patch.yml"}, "client": {"platform": "web", "inject": ["@deepseek-ai/dsh-client-ui-slots", "@deepseek-ai/dsh-client-locale"]}},
-  "scripts": {"build": "node tools/build.mjs", "test": "node --test test/*.test.mjs", "check": "npm run build && npm test", "prepack": "npm run build"}
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./icon": "./assets/icon.svg"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "NOTICE.md",
+    "assets/icon.svg",
+    "docs/assets",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": "0.2.2-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test",
+    "check": "npm run build && npm test",
+    "prepack": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangyixiao/dsh-task-signal.git"
+  },
+  "homepage": "https://github.com/tangyixiao/dsh-task-signal#readme",
+  "bugs": {
+    "url": "https://github.com/tangyixiao/dsh-task-signal/issues"
+  },
+  "icon": "./assets/icon.svg"
 }

@@ -94,3 +94,12 @@ test('Codex is the default; imported application presets work without redistribu
   assert.throws(() => store.setPreset('../outside', Buffer.from('x')))
   assert.equal(store.preset('../outside'), null)
 })
+test('an unloading plugin cannot remove a replacement instance playback file', t => {
+  const { dir, store } = fixture(t), replacement = createStore(dir)
+  const oldFile = store.writePlayback(makeWav()), newFile = replacement.writePlayback(makeWav('music'))
+  assert.notEqual(oldFile, newFile)
+  store.cleanupPlayback()
+  assert.equal(fs.existsSync(oldFile), false)
+  assert.equal(fs.existsSync(newFile), true)
+  replacement.cleanupPlayback()
+})
