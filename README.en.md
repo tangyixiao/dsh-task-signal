@@ -1,21 +1,76 @@
-# DSH Task Signal
+<p align="center"><img src="assets/logo.webp" width="192" height="192" alt="Task Signal logo"></p>
 
-A completion chime for DeepSeek Harness, with Windows host-side playback that works while its window is in the background. Main-task completion is the only enabled event by default, using the Codex style.
+<h1 align="center">DSH Task Signal · 任务提示音</h1>
 
-[Source](https://github.com/tangyixiao/dsh-task-signal) · [npm](https://www.npmjs.com/package/dsh-task-signal) · [中文](README.md)
+<p align="center">Hear when the work finishes, with a sound and reminder policy you control.</p>
 
-![Actual DSH settings page](docs/assets/settings-desktop.jpg)
+<p align="center"><a href="https://github.com/tangyixiao/dsh-task-signal"><img src="docs/assets/banner-en.svg" width="100%" alt="DSH Task Signal — Project and usage guide"></a></p>
 
-Four independent event controls: completion, question, approval, error. Codex and ZCode styles plus six original synthesized sounds, volume, previews, optional custom PCM WAV, subagent opt-in, minimum duration (default zero), foreground suppression, quiet hours, temporary mute, optional system notification and completion speech with editable transcript. Host JSON settings persist across desktop port changes. Durable events distinguish completion from cancellation; no log replay. Per-turn deduplication, burst cooldown and host claims avoid duplicate page playback. Whale coexistence checks actual activation; other notification plugins must be disabled separately for matching events.
+<p align="center"><a href="README.md">简体中文</a> · <a href="README.en.md">English</a></p>
 
-Open Plugins → dsh-task-signal and use the Task Signal panel to preview a sound. Windows defaults to native host playback; browser mode requires an open page and an initial gesture. Native audio requires the host to keep running. Speech and notifications always require an open page; notifications need permission. Default speech transcript: `任务完成了` (“Task completed”), editable in settings.
+[![Stars](https://img.shields.io/github/stars/tangyixiao/dsh-task-signal?style=flat)](https://github.com/tangyixiao/dsh-task-signal/stargazers) [![CI](https://img.shields.io/github/actions/workflow/status/tangyixiao/dsh-task-signal/check.yml?branch=main)](https://github.com/tangyixiao/dsh-task-signal/actions/workflows/check.yml) [![License](https://img.shields.io/github/license/tangyixiao/dsh-task-signal)](LICENSE) [![npm](https://img.shields.io/npm/v/dsh-task-signal)](https://www.npmjs.com/package/dsh-task-signal)
 
-Background-only mode uses page focus heartbeats that expire after 15 seconds. Quiet hours use host local time. Upload one 16-bit PCM WAV, mono/stereo, 8–48 kHz, no more than 2 MiB or 8 seconds. Host volume applies to custom WAV too; deleting it resets affected events to Codex. The source-only helper `tools/import-local-sounds.mjs --codex WAV --zcode-asar ASAR --ffmpeg EXE` can optionally import sounds from the user's installed applications for local personal playback. It never downloads a converter. Imported originals remain local and are not redistributed; absent imports use independent synthesized approximations.
+<p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/feature-1-en-dark.svg"><img src="docs/assets/feature-1-en-light.svg" width="260" alt="Background playback"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/feature-2-en-dark.svg"><img src="docs/assets/feature-2-en-light.svg" width="260" alt="Choose your signal"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/feature-3-en-dark.svg"><img src="docs/assets/feature-3-en-light.svg" width="260" alt="Quiet by default"></picture>
+</p>
 
-Install `dsh-task-signal@0.1.0` through the desktop plugin manager, or run `dsh plugin --profile web add dsh-task-signal@0.1.0` for a CLI-managed web profile.
+## Get started
 
-No dependency installation or build tool download is required: `npm run check`, then `npm pack`. Install the resulting local tarball through the desktop plugin manager. A CLI-managed web profile supports `dsh plugin --profile web add file:D:\path\dsh-task-signal-0.1.0.tgz`.
+Desktop: open Plugins → Add plugin and install `dsh-task-signal@0.1.1`. For a CLI-managed web profile:
 
-Target: DSH **0.2.2-rc.3**. Windows is the native playback validation platform. macOS `afplay` and Linux `aplay` have not been device-tested; missing players produce a visible failure and browser mode remains available. Packages are available from npm and GitHub Releases; third-party market admission is tracked separately.
+```sh
+dsh plugin --profile web add dsh-task-signal@0.1.1
+```
 
-Data lives under `$DSH_HOME/dsh-task-signal/`, normally `~/.dsh/dsh-task-signal/`: settings, optional custom WAV and Codex/ZCode local presets, and a playback WAV removed after use. Owner-authenticated loopback routes; no chat transcript storage, external requests or telemetry; a bounded 64-event in-memory queue. A successful native player exit is not proof of physical audibility. Synthetic fixtures do not prove live model inference. See [NOTICE.md](NOTICE.md) for sources and [README.md](README.md) for Chinese instructions.
+Open Plugins → dsh-task-signal and preview the completion sound. **Codex style** and main-task completion are the defaults; ZCode style, six original tones and custom WAV are selectable. Windows defaults to host playback, with settings persisted across desktop port changes.
+
+## What it does
+
+- Independent completion, question, approval and error switches, sounds and previews; quiet subagents by default.
+- Duration threshold, foreground suppression, quiet hours, temporary mute, optional notifications and speech with an editable transcript.
+- Durable completion events, per-turn deduplication and single browser claims; cancellation, refresh and history stay quiet.
+- Optional personal imports from installed Codex/ZCode applications. Distributed styles are independently synthesized; no application recordings are shipped.
+
+## In DSH
+
+![Actual DSH settings: Codex completion sound and event controls](docs/assets/settings-desktop.jpg)
+
+The feature cards are explanatory illustrations; this screenshot shows the running settings page. Audibility also depends on the system output device, volume and browser permissions.
+
+## Status and compatibility
+
+| Item | Current source of truth |
+| --- | --- |
+| Source version | `0.1.1` · [package.json](package.json) |
+| Distribution | [npm](https://www.npmjs.com/package/dsh-task-signal) · [Releases](https://github.com/tangyixiao/dsh-task-signal/releases) |
+| DSH | `0.2.2-rc.3` |
+| Node.js | `^22.19.0 \|\| >=24.0.0` |
+| Device evidence | Windows native playback, DSH installation/loading, settings and previews tested; native macOS/Linux audio devices remain unverified |
+| Development | [Open issues](https://github.com/tangyixiao/dsh-task-signal/issues?q=is%3Aissue+is%3Aopen) · [CI](https://github.com/tangyixiao/dsh-task-signal/actions) |
+
+[Usage, sound imports, troubleshooting, updating and removal](docs/guide.en.md)
+
+## Development and participation
+
+No dependency installation is required:
+
+```sh
+npm run check
+node tools/check-repository.mjs
+```
+
+[Contributing](CONTRIBUTING.md) · [Support](SUPPORT.md) · [Questions](https://github.com/tangyixiao/dsh-task-signal/discussions) · [Report a bug](https://github.com/tangyixiao/dsh-task-signal/issues/new/choose) · [Security](SECURITY.md) · [Maintenance](docs/maintenance.md)
+
+## Star History
+
+[Real Star History](https://www.star-history.com/?repos=tangyixiao/dsh-task-signal&type=date) · [GitHub Stars](https://github.com/tangyixiao/dsh-task-signal/stargazers)
+
+This new project has little history. The external chart uses actual star records and may be unavailable; no stars or development percentages are fabricated.
+
+## Origin and licenses
+
+[MIT software license](LICENSE) · [Sources and references](NOTICE.md) · [Artwork attribution](assets/NOTICE.md)
+
+The character artwork is separately CC BY-NC-SA 4.0, preserving attribution to 上善, ZipZipPipe and Small-tailqwq. Codex, ZCode and DSH are compatibility references, not endorsements.

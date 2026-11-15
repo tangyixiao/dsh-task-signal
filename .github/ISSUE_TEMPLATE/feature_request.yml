@@ -1,0 +1,16 @@
+name: Feature request / 功能建议
+description: Describe the user problem and desired behavior / 说明使用问题与期望行为
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem / 使用问题
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired behavior / 期望行为
+    validations:
+      required: true
