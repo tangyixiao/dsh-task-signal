@@ -1,0 +1,3 @@
+- insert:
+    - id: task-signal
+      name: dsh-task-signal
