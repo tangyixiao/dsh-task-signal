@@ -2,6 +2,10 @@
 
 任务完成时响一声；Windows 系统播放不依赖窗口是否在前台。默认只开启主任务完成提醒，采用 **Codex 风格**。
 
+[GitHub 源码](https://github.com/tangyixiao/dsh-task-signal) · [npm 安装包](https://www.npmjs.com/package/dsh-task-signal) · [English](README.en.md)
+
+![实际 DSH 设置页](docs/assets/settings-desktop.jpg)
+
 ## 功能
 
 - 任务完成、需要回答、等待授权、运行出错：四类提醒独立开关、选音和试听。
@@ -35,6 +39,13 @@ node tools/import-local-sounds.mjs --codex "D:\CodexApp\app\resources\codex-noti
 
 ## 安装
 
+在 DSH 桌面端的「插件 → 添加插件」中输入 `dsh-task-signal@0.1.0`，安装并启用。CLI 管理的网页 profile 可直接从 npm 安装：
+
+```powershell
+dsh plugin --profile web add dsh-task-signal@0.1.0
+```
+
+
 开发环境不需要安装依赖：
 
 ```powershell
@@ -48,11 +59,11 @@ npm pack
 dsh plugin --profile web add file:D:\path\dsh-task-signal-0.1.0.tgz
 ```
 
-兼容目标为 DSH **0.2.2-rc.3**。Windows 是本次原生播放验证目标；macOS 的 `afplay`、Linux 的 `aplay` 路径未做真机验证，缺少播放器时界面会报告错误，可选择页面播放。该包尚未发布到 npm 或市场，不要把包名安装当作已上线。
+兼容目标为 DSH **0.2.2-rc.3**。Windows 是本次原生播放验证目标；macOS 的 `afplay`、Linux 的 `aplay` 路径未做真机验证，缺少播放器时界面会报告错误，可选择页面播放。发布包可从 npm 和 GitHub Releases 获取；第三方市场收录进度单独记录。
 
 ## 数据与验证边界
 
-数据位于 `$DSH_HOME/dsh-task-signal/`（默认 `~/.dsh/dsh-task-signal/`）：`settings.json`、可选 `custom.wav`、可选本机预设 `codex.wav`/`zcode.wav`。临时 `playback.wav` 播放结束即清理。最多缓存 64 条内存提醒，不存聊天内容；无外部网络请求或遥测。设置和音频接口要求本机 DSH owner 身份。
+数据位于 `$DSH_HOME/dsh-task-signal/`（默认 `~/.dsh/dsh-task-signal/`）：`settings.json`、可选 `custom.wav`、可选本机预设 `codex.wav`/`zcode.wav`。临时 `playback-*.wav` 播放结束即清理。最多缓存 64 条内存提醒，不存聊天内容；无外部网络请求或遥测。设置和音频接口要求本机 DSH owner 身份。
 
 自动测试覆盖完成/取消区分、子代理与阈值、去重、焦点和免打扰、设置重启、WAV 验证、HTTP 身份与大小限制。系统播放器正常退出证明调用完成，实际听到声音仍取决于系统音量、输出设备和用户听感。模拟完成事件不等于付费模型实测。
 
