@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "standard_version": "0.1.0",
+  "repository": "tangyixiao/dsh-task-signal",
+  "distribution": "npm",
+  "logo": "assets/logo.webp",
+  "readme": {"primary": "README.md", "secondary": "README.en.md"},
+  "resources": {"free_space_reserve_gib": 10, "temporary_growth_warning_gib": 1, "temporary_growth_budget_gib": 2, "max_log_mib": 20, "max_heavy_jobs_per_machine": 1, "max_logo_kib": 256, "artifact_retention_days": 14},
+  "desired_settings": {"issues": true, "discussions": true, "projects": true, "private_vulnerability_reporting": true, "delete_branch_on_merge": true},
+  "exceptions": {
+    "packages": "Distribute the actual npm plugin and release tarball; no placeholder container/app-store package.",
+    "wiki": "Versioned guides are authoritative; do not create duplicate empty Wiki content.",
+    "projects": "Issues and PRs own the current backlog; an enabled tab is not a populated board.",
+    "publishing": "No new release credential or trusted publisher is provisioned.",
+    "progress": "Use real releases, checks, issues and Stars; a new repository has no meaningful Star History until actual activity exists.",
+    "website": "README and versioned guides are the current user path; a new standalone website requires a separately approved visual overview."
+  }
+}

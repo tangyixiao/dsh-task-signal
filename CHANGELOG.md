@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-11-15
+
+- Complete bilingual README identity: selected character logo, linked banners, theme-aware feature cards, real settings screenshot and live badges.
+- Add usage/troubleshooting/update/removal guides, contribution/support/security entry points and repository-source checks.
+- Preserve local sound preferences and separate artwork attribution from the MIT software license.
+
 ## 0.1.0 — 2026-11-15
 
 - Completion, question, approval and error sounds with independent controls; completion only by default.

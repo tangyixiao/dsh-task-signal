@@ -1,6 +1,6 @@
 {
   "name": "dsh-task-signal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "任务提示音 · Task Signal",
   "description": "DSH task completion sounds: native background playback, event controls, persistent settings and quiet subagents.",
   "type": "module",
@@ -18,7 +18,7 @@
     "./client": "./lib/client.js",
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json",
-    "./icon": "./assets/icon.svg"
+    "./icon": "./assets/logo.webp"
   },
   "files": [
     "lib",
@@ -29,7 +29,14 @@
     "NOTICE.md",
     "assets/icon.svg",
     "docs/assets",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "assets/logo.webp",
+    "assets/NOTICE.md",
+    "assets/LICENSE-WHALE-ARTWORK",
+    "docs/guide.zh-CN.md",
+    "docs/guide.en.md",
+    "SUPPORT.md",
+    "SECURITY.md"
   ],
   "engines": {
     "node": "^22.19.0 || >=24.0.0",
@@ -61,5 +68,5 @@
   "bugs": {
     "url": "https://github.com/tangyixiao/dsh-task-signal/issues"
   },
-  "icon": "./assets/icon.svg"
+  "icon": "./assets/logo.webp"
 }

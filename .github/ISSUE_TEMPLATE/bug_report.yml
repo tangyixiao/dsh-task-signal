@@ -1,0 +1,26 @@
+name: Bug report / 缺陷反馈
+description: Report a reproducible Task Signal problem / 反馈可复现的问题
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, personal audio or full DSH configuration. / 不要附带凭据、个人音频或完整配置。
+  - type: input
+    id: versions
+    attributes:
+      label: Plugin / DSH / OS versions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction / 最短复现
+      description: Include whether preview works and whether host or browser output is selected.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual / 预期与实际
+    validations:
+      required: true
