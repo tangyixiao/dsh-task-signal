@@ -4,10 +4,10 @@
 
 ## 安装与第一次试听
 
-DSH Desktop：打开左侧「插件 → 添加插件」，输入 `dsh-task-signal@0.1.1`，安装并启用。在「插件 → dsh-task-signal」详情页找到「任务提示音」。CLI 管理的网页 profile 可用：
+DSH Desktop：打开左侧「插件 → 添加插件」，输入 `dsh-task-signal@0.1.2`，安装并启用。在「插件 → dsh-task-signal」详情页找到「任务提示音」。CLI 管理的网页 profile 可用：
 
 ```powershell
-dsh plugin --profile web add dsh-task-signal@0.1.1
+dsh plugin --profile web add dsh-task-signal@0.1.2
 ```
 
 默认只开主任务完成提醒，完成音为 Codex 风格。Windows 默认选“宿主系统”；先点一次“任务完成 · 试听”。想让网页所在的电脑发声，改为“当前页面”，再点试听解锁页面音频。

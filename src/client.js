@@ -174,5 +174,5 @@ exports.apply = function apply(ctx) {
   document.addEventListener('pointerdown', unlock, { once: true })
   void poll()
   ctx.effect(() => () => { stopped = true; clearTimeout(timer); clearTimeout(audioTimer); for (const dispose of off) if (typeof dispose === 'function') dispose(); style.remove(); subscribers.clear(); cleanupAudio(); void soundContext?.close(); document.removeEventListener('pointerdown', unlock); window.removeEventListener('focus', onFocus); window.removeEventListener('blur', onFocus); document.removeEventListener('visibilitychange', onFocus) })
-  console.info('[Task Signal] client 0.1.1 ready')
+  console.info('[Task Signal] client 0.1.2 ready')
 }

@@ -18,10 +18,10 @@
 
 ## 开始使用
 
-Desktop：打开「插件 → 添加插件」，输入 `dsh-task-signal@0.1.1`，安装并启用。CLI 管理的网页 profile 可用：
+Desktop：打开「插件 → 添加插件」，输入 `dsh-task-signal@0.1.2`，安装并启用。CLI 管理的网页 profile 可用：
 
 ```sh
-dsh plugin --profile web add dsh-task-signal@0.1.1
+dsh plugin --profile web add dsh-task-signal@0.1.2
 ```
 
 进入「插件 → dsh-task-signal」，点“任务完成 · 试听”。默认采用 **Codex 风格**，只开主任务完成提醒；ZCode、六种原创音色和自定义 WAV 均可选择。Windows 默认由宿主播放，页面换端口不会丢失设置。
@@ -43,7 +43,7 @@ dsh plugin --profile web add dsh-task-signal@0.1.1
 
 | 项目 | 当前依据 |
 | --- | --- |
-| 源码版本 | `0.1.1` · 以 [package.json](package.json) 为准 |
+| 源码版本 | `0.1.2` · 以 [package.json](package.json) 为准 |
 | 分发方式 | [npm](https://www.npmjs.com/package/dsh-task-signal) · [Releases](https://github.com/tangyixiao/dsh-task-signal/releases) |
 | DSH | `0.2.2-rc.3` |
 | Node.js | `^22.19.0 \|\| >=24.0.0` |
