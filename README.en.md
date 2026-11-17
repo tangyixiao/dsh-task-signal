@@ -74,3 +74,7 @@ This new project has little history. The external chart uses actual star records
 [MIT software license](LICENSE) · [Sources and references](NOTICE.md) · [Artwork attribution](assets/NOTICE.md)
 
 The character artwork is separately CC BY-NC-SA 4.0, preserving attribution to 上善, ZipZipPipe and Small-tailqwq. Codex, ZCode and DSH are compatibility references, not endorsements.
+
+## Project website
+
+Download or clone this repository, then open the [English homepage](project-website/site/en/index.html) or [中文首页](project-website/site/index.html) in your browser. Both versions work offline.
