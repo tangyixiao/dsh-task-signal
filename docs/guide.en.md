@@ -4,10 +4,10 @@
 
 ## Install and preview
 
-Install `dsh-task-signal@0.1.1` through DSH Desktop's plugin manager. Open Plugins → dsh-task-signal and find Task Signal. For a CLI-managed web profile:
+Install `dsh-task-signal@0.1.2` through DSH Desktop's plugin manager. Open Plugins → dsh-task-signal and find Task Signal. For a CLI-managed web profile:
 
 ```sh
-dsh plugin --profile web add dsh-task-signal@0.1.1
+dsh plugin --profile web add dsh-task-signal@0.1.2
 ```
 
 Only main-task completion is enabled by default, using the Codex style. Windows defaults to host-system playback. Preview once. For sound on the computer displaying a remote page, choose browser playback and preview to unlock audio.

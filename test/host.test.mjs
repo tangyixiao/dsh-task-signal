@@ -53,17 +53,17 @@ test('browser claim is exactly once across pages and old deliveries expire', t =
   assert.equal(service.claim(second.seq), null)
 })
 test('HTTP rejects foreign origins, DNS rebinding and non-owner principals', () => {
-  const owner = { admit: () => ({ peer: { principal: { kind: 'owner' } } }) }
+  const owner = { requestRejection: () => undefined, admit: () => ({ peer: { principal: { kind: 'owner' } } }) }
   const req = { headers: { host: '127.0.0.1:8520', origin: 'http://127.0.0.1:8520' } }
   assert.equal(refusal(req, owner), null)
   assert.equal(refusal({ headers: { ...req.headers, origin: 'https://evil.example' } }, owner), 403)
   assert.equal(refusal({ headers: { host: 'evil.example:8520' } }, owner), 403)
   assert.equal(refusal(req, undefined), 401)
-  assert.equal(refusal(req, { admit: () => ({ peer: { principal: { kind: 'guest' } } }) }), 403)
+  assert.equal(refusal(req, { requestRejection: () => undefined, admit: () => ({ peer: { principal: { kind: 'guest' } } }) }), 403)
 })
 test('real HTTP route validates auth, JSON, upload limits, and saves settings', async t => {
   const { service } = fixture(t)
-  const handler = createHandler(service, () => ({ admit: req => req.headers['x-test-owner'] === 'yes' ? { peer: { principal: { kind: 'owner' } } } : { rejection: 401 } }))
+  const handler = createHandler(service, () => ({ requestRejection: () => undefined, admit: req => req.headers['x-test-owner'] === 'yes' ? { peer: { principal: { kind: 'owner' } } } : { rejection: 401 } }))
   const server = http.createServer(handler)
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
   t.after(() => new Promise(resolve => server.close(resolve)))
@@ -102,4 +102,26 @@ test('an unloading plugin cannot remove a replacement instance playback file', t
   assert.equal(fs.existsSync(oldFile), false)
   assert.equal(fs.existsSync(newFile), true)
   replacement.cleanupPlayback()
+})
+
+
+test('Host policy is authoritative, synchronous and runs before owner, body and service work', async () => {
+  const req = { method: 'POST', url: BASE + '/settings', headers: { host: '127.0.0.1:8520', 'content-type': 'application/json' }, [Symbol.asyncIterator]() { throw new Error('must not read body') } }
+  let admits = 0, work = 0
+  const admit = () => { admits++; return { peer: { principal: { kind: 'owner' } } } }
+  for (const make of [() => 401, () => 403, () => null, () => false, () => 0, () => 200, () => ({}), () => Promise.resolve(undefined), () => Promise.reject(new Error('async policy')), () => ({ then: (_ok, reject) => reject(new Error('thenable policy')) }), () => { throw new Error('broken policy') }]) {
+    const answer = make
+    const service = { store: { update() { work++ } } }
+    let status
+    const res = { writeHead(code) { status = code }, end() {} }
+    await createHandler(service, () => ({ requestRejection: answer, admit }))(req, res)
+    assert.ok([401, 403].includes(status))
+  }
+  assert.equal(admits, 0); assert.equal(work, 0)
+  assert.equal(refusal(req, { admit }), 401)
+  assert.equal(refusal(req, { requestRejection: () => undefined }), 401)
+  for (const make of [() => undefined, () => null, () => ({}), () => ({ rejection: undefined }), () => ({ rejection: 200 }), () => ({ peer: {} }), () => Promise.reject(new Error('async owner'))]) {
+    assert.equal(refusal(req, { requestRejection: () => undefined, admit: make }), 403)
+  }
+  await new Promise(resolve => setImmediate(resolve))
 })
