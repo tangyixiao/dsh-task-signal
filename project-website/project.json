@@ -16,13 +16,13 @@
     }
   ],
   "release": "dsh-task-signal",
-  "license_label": "MIT",
+  "license_label": "MIT code · asset notices",
   "links": {
     "repository": "https://github.com/tangyixiao/dsh-task-signal",
     "download": "https://github.com/tangyixiao/dsh-task-signal/blob/main/docs/guide.zh-CN.md",
     "documentation": "https://github.com/tangyixiao/dsh-task-signal/blob/main/docs/guide.zh-CN.md",
     "release": "https://github.com/tangyixiao/dsh-task-signal",
-    "license": "https://github.com/tangyixiao/dsh-task-signal/blob/main/LICENSE",
+    "license": "https://github.com/tangyixiao/dsh-task-signal/blob/main/NOTICE.md",
     "report_issue": "https://github.com/tangyixiao/dsh-task-signal/issues",
     "suggest_feature": "https://github.com/tangyixiao/dsh-task-signal/discussions",
     "contribute": "https://github.com/tangyixiao/dsh-task-signal/pulls"
