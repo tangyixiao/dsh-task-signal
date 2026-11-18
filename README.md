@@ -74,3 +74,7 @@ node tools/check-repository.mjs
 [软件许可 MIT](LICENSE) · [方案参考与来源](NOTICE.md) · [角色美术与署名](assets/NOTICE.md)
 
 角色美术单独采用 CC BY-NC-SA 4.0，保留上善、ZipZipPipe、Small-tailqwq 的署名链。Codex、ZCode、DSH 仅用于兼容性说明，不代表官方合作。
+
+## 项目网站
+
+下载或克隆仓库后，用浏览器打开[中文首页](project-website/site/index.html)或 [English homepage](project-website/site/en/index.html)。两个版本都可以离线阅读。

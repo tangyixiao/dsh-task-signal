@@ -1,0 +1,41 @@
+name: Validate the bilingual project website
+on:
+  pull_request:
+    paths:
+      - 'project-website/**'
+      - '.github/workflows/check-project-website.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: project-website-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: project-website
+      - name: Check rendered pages, local links and translations
+        run: python3 project-website/scripts/check.py
+      - name: Provide Chinese glyphs for browser screenshots
+        run: |
+          if [ -z "$(fc-list :lang=zh-cn family)" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends fonts-wqy-microhei
+          fi
+          test -n "$(fc-list :lang=zh-cn family)"
+      - name: Exercise desktop and mobile in the runner browser
+        run: python3 project-website/scripts/smoke_browser.py project-website --screenshots "$RUNNER_TEMP/project-website-screenshots"
+      - name: Save desktop and mobile screenshots for review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: project-website-screenshots
+          path: ${{ runner.temp }}/project-website-screenshots/*.png
+          if-no-files-found: error
+          retention-days: 3

@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "description": "Choose separate sounds for completion, questions, permission requests and errors. Main-task completion is enabled by default and subagents start muted."
+  },
+  "pages": {
+    "home": {
+      "title": "Hear when DSH needs you · {project}"
+    },
+    "features": {
+      "title": "Features · {project}",
+      "description": "Choose separate sounds for completion, questions, permission requests and errors. Main-task completion is enabled by default and subagents start muted."
+    },
+    "download": {
+      "title": "Get started · {project}",
+      "description": "Enter dsh-task-signal in the DSH Desktop Add Plugin dialog and select a compatible version."
+    },
+    "community": {
+      "title": "Community · {project}",
+      "description": "Find usage guidance, follow discussions and review changes to this project."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Get started",
+    "community": "Community"
+  },
+  "ui": {
+    "skip_link": "Skip to main content",
+    "navigation": "Main navigation",
+    "open_navigation": "Open navigation",
+    "close_navigation": "Close navigation",
+    "language": "Choose language",
+    "theme": "Choose theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "platforms": "Supported platforms",
+    "github": "GitHub",
+    "view_image": "View full illustration",
+    "feature_more": "Explore features",
+    "download": "Open the sound guide",
+    "release_notes": "Source repository",
+    "documentation": "Documentation",
+    "source": "Source repository",
+    "illustration": "First steps",
+    "license": "MIT code · asset notices"
+  },
+  "hero": {
+    "title": [
+      "Hear when DSH needs you"
+    ],
+    "description": [
+      "Choose separate sounds for completion, questions, permission requests and errors. Main-task completion is enabled by default and subagents start muted."
+    ],
+    "primary_action": "Open the sound guide",
+    "secondary_action": "Explore features"
+  },
+  "preview": {
+    "caption": "Actual DSH settings panel in Chinese. Each event has its own sound preview.",
+    "image": {
+      "alt": "Task Signal settings showing host playback, 75% volume and separate sound selectors and preview buttons for four event types",
+      "caption": "Actual DSH settings panel in Chinese. Each event has its own sound preview."
+    }
+  },
+  "features": {
+    "title": "Project features",
+    "groups": [
+      {
+        "title": "Pick a sound per event",
+        "description": "Preview the built-in tones or import a WAV of your own. Each event has its own switch.",
+        "detail": "",
+        "icon": "layers"
+      },
+      {
+        "title": "Choose when to hear it",
+        "description": "Set a minimum task duration, background-only alerts or quiet hours that span midnight.",
+        "detail": "",
+        "icon": "book"
+      }
+    ]
+  },
+  "getting_started": {
+    "title": "Get started · {project}",
+    "steps": [
+      {
+        "title": "Install and enable",
+        "description": "Enter dsh-task-signal in the DSH Desktop Add Plugin dialog and select a compatible version.",
+        "icon": "book"
+      },
+      {
+        "title": "Preview completion",
+        "description": "Open the plugin settings, preview the completion sound and enable other events as needed.",
+        "icon": "link"
+      }
+    ]
+  },
+  "community": {
+    "title": "Community · {project}",
+    "description": "Find usage guidance, follow discussions and review changes to this project.",
+    "links": [
+      {
+        "label": "Help and feedback",
+        "description": "Browse existing reports or describe a reproducible problem.",
+        "icon": "book"
+      },
+      {
+        "label": "Join the discussion",
+        "description": "Read existing topics or share questions and ideas.",
+        "icon": "link"
+      },
+      {
+        "label": "Review changes",
+        "description": "Review open pull requests or prepare a contribution.",
+        "icon": "code"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "{copyright}"
+  }
+}
