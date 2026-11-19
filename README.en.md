@@ -18,10 +18,10 @@
 
 ## Get started
 
-Desktop: open Plugins → Add plugin and install `dsh-task-signal@0.1.2`. For a CLI-managed web profile:
+Desktop: open Plugins → Add plugin and install `dsh-task-signal@0.1.3`. For a CLI-managed web profile:
 
 ```sh
-dsh plugin --profile web add dsh-task-signal@0.1.2
+dsh plugin --profile web add dsh-task-signal@0.1.3
 ```
 
 Open Plugins → dsh-task-signal and preview the completion sound. **Codex style** and main-task completion are the defaults; ZCode style, six original tones and custom WAV are selectable. Windows defaults to host playback, with settings persisted across desktop port changes.
@@ -43,9 +43,9 @@ The feature cards are explanatory illustrations; this screenshot shows the runni
 
 | Item | Current source of truth |
 | --- | --- |
-| Source version | `0.1.2` · [package.json](package.json) |
+| Source version | `0.1.3` · [package.json](package.json) |
 | Distribution | [npm](https://www.npmjs.com/package/dsh-task-signal) · [Releases](https://github.com/tangyixiao/dsh-task-signal/releases) |
-| DSH | `0.2.2-rc.3` |
+| DSH | `0.2.2-rc.3 \|\| 0.2.2-rc.5` |
 | Node.js | `^22.19.0 \|\| >=24.0.0` |
 | Device evidence | Windows native playback, DSH installation/loading, settings and previews tested; native macOS/Linux audio devices remain unverified |
 | Development | [Open issues](https://github.com/tangyixiao/dsh-task-signal/issues?q=is%3Aissue+is%3Aopen) · [CI](https://github.com/tangyixiao/dsh-task-signal/actions) |
