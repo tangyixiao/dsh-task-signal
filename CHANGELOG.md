@@ -1,3 +1,7 @@
+# 0.1.3 — DSH 0.2.2-rc.5 compatibility
+
+- Allow Task Signal to load on DSH 0.2.2-rc.5 while retaining 0.2.2-rc.3 support.
+
 # 0.1.2 — HTTP admission hardening
 
 All registered HTTP routes first call the Host's synchronous `connection.requestRejection(request)` policy, then require the authenticated owner. Missing methods, thrown checks, invalid results and asynchronous results fail closed before reading request bodies or performing route work. Existing local request restrictions and per-action keys remain in place.
